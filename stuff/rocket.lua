@@ -48,6 +48,8 @@ function Rocket:make(x, y)
 
         dx, dy = dx + ddx * t.acc, dy + ddy * t.acc
       end
+
+      t:update(self.frc, dt)
     end
 
     self.dx = self.dx + dx * dt
@@ -71,6 +73,7 @@ function Rocket:make(x, y)
       self.thrusters[i].x = self.x + math.cos(self.r + a.x) * self.rad
       self.thrusters[i].y = self.y + math.sin(self.r + a.y) * self.rad
     end
+
   end
 
   function rocket:draw()

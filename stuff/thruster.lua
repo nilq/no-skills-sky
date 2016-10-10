@@ -7,6 +7,10 @@ function Thruster:make(x, y)
     boost = 5,  boost  = false,
   }
 
+  function thruster:update(frc, dt)
+    self.acc = self.acc - (self.acc / frc) * dt
+  end
+
   function thruster:get_normal(x, y)
     local a = math.atan2(y - self.y, x - self.x)
     return math.cos(a), math.sin(a)
