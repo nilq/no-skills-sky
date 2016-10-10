@@ -5,7 +5,7 @@ function Rocket:make(x, y)
     x = x, y = y,
     r = 0, rad = 15,
     dx = 0, dy = 0,
-    frc = 0.25,
+    frc = 4.25,
     --
     thrusters = {},
     angles = {},
@@ -30,9 +30,6 @@ function Rocket:make(x, y)
 
       self.thrusters[#self.thrusters + 1] = Thruster:make(self.x + math.cos(self.r + a.x) * self.rad, self.y + math.sin(self.r + a.y) * self.rad)
     end
-
-    self.thrusters[1].acc = 2
-    self.thrusters[2].acc = 2.5
   end
 
   function rocket:update(dt)
@@ -41,18 +38,21 @@ function Rocket:make(x, y)
     local drx, dry = 0, 0
     for i = 1, #self.thrusters do
       local t = self.thrusters[i]
-      local ddx, ddy = t:get_normal(self.x, self.y)
+      if t.active then
+        local ddx, ddy = t:get_normal(self.x, self.y)
 
-      drx = drx + ddx
-      dry = dry + ddy
+        drx = drx + ddx
+        dry = dry + ddy
 
-      dx, dy = dx + ddx * t.acc, dy + ddy * t.acc
+        dx, dy = dx + ddx * t.acc, dy + ddy * t.acc
+      end
     end
 
-    self.dx, self.dy = dx, dy
+    self.dx = self.dx + dx * dt
+    self.dy = self.dy + dy * dt
 
-    self.dx = self.dx - (self.dx / 1 / self.frc) * dt
-    self.dy = self.dy - (self.dy / 1 / self.frc) * dt
+    self.dx = self.dx - (self.dx / self.frc) * dt
+    self.dy = self.dy - (self.dy / self.frc) * dt
 
     self.x  = self.x + self.dx
     self.y  = self.y + self.dy

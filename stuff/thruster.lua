@@ -3,7 +3,7 @@ local Thruster = {}
 function Thruster:make(x, y)
   local thruster = {
     x = x, y = y,
-    acc = 1000,
+    acc = 0, active = true,
   }
 
   function thruster:get_normal(x, y)
@@ -12,11 +12,19 @@ function Thruster:make(x, y)
   end
 
   function thruster:draw()
-    love.graphics.setColor(150, 0, 0)
-    love.graphics.circle("fill", self.x, self.y, 7)
+    if self.active then
+      love.graphics.setColor(0, 0, 150)
+      love.graphics.circle("fill", self.x, self.y, 7)
 
-    love.graphics.setColor(100, 0, 0)
-    love.graphics.circle("line", self.x, self.y, 7)
+      love.graphics.setColor(0, 0, 100)
+      love.graphics.circle("line", self.x, self.y, 7)
+    else
+      love.graphics.setColor(150, 0, 0)
+      love.graphics.circle("fill", self.x, self.y, 7)
+
+      love.graphics.setColor(100, 0, 0)
+      love.graphics.circle("line", self.x, self.y, 7)
+    end
   end
 
   return thruster

@@ -35,6 +35,15 @@ function Player:make(x, y)
     self.r:draw()
   end
 
+  function player:press(key)
+    if key == "v" then
+      self.r.thrusters[1].active = not self.r.thrusters[1].active
+    end
+    if key == "x" then
+      self.r.thrusters[2].active = not self.r.thrusters[1].active
+    end
+  end
+
   return player
 end
 

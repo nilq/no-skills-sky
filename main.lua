@@ -15,3 +15,7 @@ end
 function love.draw()
   player:draw()
 end
+
+function love.keypressed(key, scancode, isrepeat)
+  player:press(key)
+end
