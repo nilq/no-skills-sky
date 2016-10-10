@@ -74,10 +74,12 @@ function Rocket:make(x, y)
   function rocket:draw()
     for i = 1, #self.thrusters do
       local t = self.thrusters[i]
-      local dx, dy = t:get_normal(self.x, self.y)
+      if t.active then
+        local dx, dy = t:get_normal(self.x, self.y)
 
-      love.graphics.setColor(255, 0, 0)
-      love.graphics.line(t.x + dx, t.y + dy, t.x + dx * t.acc * 50, t.y + dy * t.acc * 50)
+        love.graphics.setColor(255, 0, 0)
+        love.graphics.line(t.x + dx, t.y + dy, t.x + dx * t.acc * 50, t.y + dy * t.acc * 50)
+      end
       t:draw()
     end
 

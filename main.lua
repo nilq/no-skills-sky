@@ -1,10 +1,19 @@
 love.graphics.setDefaultFilter("nearest", "nearest")
-love.graphics.setBackgroundColor(255, 255, 255)
+love.graphics.setBackgroundColor(0, 0, 0)
 
 cam_x, cam_y = 0, 0
 
 function math.lerp(a, b, t)
   return (1 - t) * a + t * b
+end
+
+function math.clamp(a, b, n)
+  if n < a then
+    return a
+  elseif n > b then
+    return b
+  end
+  return n
 end
 
 function love.load()

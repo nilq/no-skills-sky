@@ -16,14 +16,14 @@ function Player:make(x, y)
 
     if love.keyboard.isDown("d") then
       local ts = self.r.thrusters
-      ts[1].acc = math.lerp(ts[1].acc, 0, dt * 0.5)
-      ts[2].acc = math.lerp(ts[2].acc, 420, dt * 0.5)
+      ts[1].acc = ts[1].acc - 0.15
+      ts[2].acc = ts[2].acc + 0.15
     end
 
     if love.keyboard.isDown("e") then
       local ts = self.r.thrusters
-      ts[1].acc = math.lerp(ts[1].acc, 420, dt * 0.05)
-      ts[2].acc = math.lerp(ts[2].acc, 0, dt * 0.05)
+      ts[1].acc = ts[1].acc + 0.15
+      ts[2].acc = ts[2].acc - 0.15
     end
 
     if love.keyboard.isDown("t") then
@@ -40,6 +40,10 @@ function Player:make(x, y)
       end
     end
 
+    for i = 1, #self.r.thrusters do
+      self.r.thrusters[i].acc = math.clamp(-3, 3, self.r.thrusters[i].acc)
+    end
+
     self.r:update(dt)
   end
 
@@ -48,10 +52,10 @@ function Player:make(x, y)
   end
 
   function player:press(key)
-    if key == "v" then
+    if key == "right" then
       self.r.thrusters[1]:toggle()
     end
-    if key == "x" then
+    if key == "left" then
       self.r.thrusters[2]:toggle()
     end
   end
