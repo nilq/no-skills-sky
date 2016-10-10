@@ -9,6 +9,8 @@ function Rocket:make(x, y)
     --
     thrusters = {},
     angles = {},
+    --
+    sprite = love.graphics.newImage("res/ship.png"),
   }
 
   function rocket:load()
@@ -72,25 +74,8 @@ function Rocket:make(x, y)
   end
 
   function rocket:draw()
-    for i = 1, #self.thrusters do
-      local t = self.thrusters[i]
-      if t.active then
-        local dx, dy = t:get_normal(self.x, self.y)
-
-        love.graphics.setColor(255, 0, 0)
-        love.graphics.line(t.x + dx, t.y + dy, t.x + dx * t.acc * 50, t.y + dy * t.acc * 50)
-      end
-      t:draw()
-    end
-
-    love.graphics.setColor(150, 150, 150)
-    love.graphics.circle("fill", self.x, self.y, self.rad)
-
-    love.graphics.setColor(100, 100, 100)
-    love.graphics.circle("line", self.x, self.y, self.rad)
-
-    love.graphics.setColor(0, 255, 0)
-    love.graphics.line(self.x + self.dx, self.y + self.dy, self.x + self.dx * 50, self.y + self.dy * 50)
+    love.graphics.setColor(255, 255, 255)
+    love.graphics.draw(self.sprite, self.x, self.y, self.r + math.pi / 2, 0.75, 0.75, self.sprite:getWidth() / 2, self.sprite:getHeight() / 2)
   end
 
   return rocket

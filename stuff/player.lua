@@ -20,23 +20,23 @@ function Player:make(x, y)
       ts[2].acc = ts[2].acc + 0.15
     end
 
-    if love.keyboard.isDown("e") then
+    if love.keyboard.isDown("a") then
       local ts = self.r.thrusters
       ts[1].acc = ts[1].acc + 0.15
       ts[2].acc = ts[2].acc - 0.15
     end
 
-    if love.keyboard.isDown("t") then
+    if love.keyboard.isDown("w") then
       for i = 1, #self.r.thrusters do
         local t = self.r.thrusters[i]
         t.acc = t.acc + self.acc * dt
       end
     end
 
-    if love.keyboard.isDown("q") then
+    if love.keyboard.isDown("space") then
       for i = 1, #self.r.thrusters do
         local t = self.r.thrusters[i]
-        t.acc = t.acc - self.acc * dt
+        t.acc = math.lerp(t.acc, 0, dt * 2)
       end
     end
 
