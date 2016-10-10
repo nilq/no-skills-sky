@@ -1,5 +1,5 @@
 love.graphics.setDefaultFilter("nearest", "nearest")
-love.graphics.setBackgroundColor(0, 0, 0)
+love.graphics.setBackgroundColor(255, 255, 255)
 
 cam_x, cam_y = 0, 0
 
@@ -33,8 +33,18 @@ end
 
 function love.draw()
   love.graphics.push()
-  print(cam_x, cam_y)
   love.graphics.translate(cam_x, cam_y)
+
+  love.graphics.setColor(0, 0, 0, 122)
+
+  for i = 1, love.graphics.getWidth(), 48 do
+    love.graphics.line(cam_x + i, -cam_y, i, love.graphics.getHeight() - cam_y)
+  end
+
+  for i = 1, love.graphics.getHeight(), 48 do
+    love.graphics.line(-cam_x, cam_y + i, love.graphics.getWidth() - cam_x, i)
+  end
+
   player:draw()
 
   love.graphics.pop()
