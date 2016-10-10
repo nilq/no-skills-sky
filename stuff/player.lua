@@ -49,10 +49,10 @@ function Player:make(x, y)
 
   function player:press(key)
     if key == "v" then
-      self.r.thrusters[1].active = not self.r.thrusters[1].active
+      self.r.thrusters[1]:toggle()
     end
     if key == "x" then
-      self.r.thrusters[2].active = not self.r.thrusters[2].active
+      self.r.thrusters[2]:toggle()
     end
   end
 

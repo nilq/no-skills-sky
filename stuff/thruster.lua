@@ -12,6 +12,11 @@ function Thruster:make(x, y)
     return math.cos(a), math.sin(a)
   end
 
+  function thruster:toggle()
+    self.acc = 0
+    self.active = not self.active
+  end
+
   function thruster:draw()
     if self.active then
       love.graphics.setColor(0, 0, 150)
