@@ -7,9 +7,12 @@ function Player:make(x, y)
 
   function player:load()
     local Rocket = require "stuff/rocket"
+    local Bullet = require "stuff/bullet"
 
     self.r = Rocket:make(x, y)
     self.r:load()
+
+    self.bullet = Bullet:make()
   end
 
   function player:update(dt)
@@ -33,7 +36,7 @@ function Player:make(x, y)
       end
     end
 
-    if love.keyboard.isDown("space") then
+    if love.keyboard.isDown("s") then
       for i = 1, #self.r.thrusters do
         local t = self.r.thrusters[i]
         t.acc = math.lerp(t.acc, 0, dt * 2)
@@ -45,18 +48,17 @@ function Player:make(x, y)
     end
 
     self.r:update(dt)
+    self.bullet:update(dt)
   end
 
   function player:draw()
     self.r:draw()
+    self.bullet:draw()
   end
 
   function player:press(key)
-    if key == "right" then
-      self.r.thrusters[1]:toggle()
-    end
-    if key == "left" then
-      self.r.thrusters[2]:toggle()
+    if key == "space" then
+      bullet:make_rotation(self.r.x, self.r.y, self.r.r, -1000)
     end
   end
 
