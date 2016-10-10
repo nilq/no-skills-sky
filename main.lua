@@ -31,7 +31,6 @@ function love.update(dt)
 
   camera.x = math.lerp(camera.x, player.r.x - camera:get_width() / 2, 10 * dt)
   camera.y = math.lerp(camera.y, player.r.y - camera:get_height() / 2, 10 * dt)
-  print(camera.x, camera.y)
 end
 
 function love.draw()

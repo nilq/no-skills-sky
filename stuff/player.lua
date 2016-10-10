@@ -41,7 +41,7 @@ function Player:make(x, y)
     end
 
     for i = 1, #self.r.thrusters do
-      self.r.thrusters[i].acc = math.clamp(-3, 3, self.r.thrusters[i].acc)
+      self.r.thrusters[i].acc = math.clamp(-12, 12, self.r.thrusters[i].acc)
     end
 
     self.r:update(dt)

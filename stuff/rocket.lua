@@ -5,7 +5,7 @@ function Rocket:make(x, y)
     x = x, y = y,
     r = 0, rad = 15,
     dx = 0, dy = 0,
-    frc = 4.25,
+    frc = 0.925,
     --
     thrusters = {},
     angles = {},
