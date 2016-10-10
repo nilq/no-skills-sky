@@ -1,6 +1,10 @@
 love.graphics.setDefaultFilter("nearest", "nearest")
 love.graphics.setBackgroundColor(255, 255, 255)
 
+function math.lerp(a, b, t)
+  return (1 - t) * a + t * b
+end
+
 function love.load()
   local Player = require "stuff/player"
 

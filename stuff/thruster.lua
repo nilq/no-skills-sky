@@ -3,7 +3,8 @@ local Thruster = {}
 function Thruster:make(x, y)
   local thruster = {
     x = x, y = y,
-    acc = 0, active = true,
+    acc = 0,    active = true,
+    boost = 5,  boost  = false,
   }
 
   function thruster:get_normal(x, y)
