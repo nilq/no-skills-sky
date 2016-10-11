@@ -3,41 +3,6 @@ a game about being a pilot
 
 ---
 
-EVERYTHING DEPENDS ON YOU BUT YOU DON'T KNOW THE RULES
-
----
-
-ship:
-	rotation
-		'E' : +
-		'D' : -
-
-	velocity - all engines at once!
-
-		'T' : onwards!
-		'Q' : ~onwards!
-	boost
-		'SPACE' : booooost!!1
-
-	gyroscope -> move weight vector forces
-
-		'SHIFT' + 'TAB' : lerp left in limited area
-		'TAB' + 'SHIFT' : lerp right in limited area
-		'TAB' : lerp down in limited area
-		'SHIFT' : lerp up in limited area
-
-	engines
-		'X' : left
-		'C' : main
-		'V' : right
-
-gun:
-	'mouse' : atan2 -> aiming
-	rapidly spam 'P' : reload
-	'ENTER' : fire towards mouse!
-
----
-
 Control the world's last SUPER-ELITE-SPACE-ENGINE and destroy the evil 'beaurrrrocrates'(something) ... everything depends on you: better learn the shit.
 
 The fuel of your ship is decreasing and you have limited ammo.
